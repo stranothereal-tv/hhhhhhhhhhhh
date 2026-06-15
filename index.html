@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solvaro Waitlist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero-card" aria-labelledby="waitlist-title">
+      <div class="brand" aria-label="Solvaro logo">
+        <span class="brand__word">Solvaro</span><span class="brand__mark">®</span>
+      </div>
+
+      <div class="intro">
+        <p class="eyebrow">Artist intake waitlist</p>
+        <h1 id="waitlist-title">Join the Solvaro roster waitlist</h1>
+        <p class="subtitle">Submit your artist details, social links, distribution history, and one song for review.</p>
+      </div>
+
+      <form id="waitlist-form" class="waitlist-form" action="thanks.html" method="post" enctype="multipart/form-data">
+        <div class="field-grid">
+          <label>
+            <span>Full name</span>
+            <input type="text" name="fullName" placeholder="Your legal name" required />
+          </label>
+
+          <label>
+            <span>Artist name</span>
+            <input type="text" name="artistName" placeholder="Your stage name" required />
+          </label>
+        </div>
+
+        <div class="field-grid">
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="artist@example.com" required />
+          </label>
+
+          <label>
+            <span>Phone number</span>
+            <input type="tel" name="phone" placeholder="+1 555 000 0000" required />
+          </label>
+        </div>
+
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" placeholder="Create a password" minlength="8" required />
+        </label>
+
+        <label>
+          <span>Social accounts</span>
+          <textarea name="socials" rows="3" placeholder="Instagram, TikTok, X, SoundCloud, or other profile links" required></textarea>
+        </label>
+
+        <label>
+          <span>YouTube channel</span>
+          <input type="url" name="youtube" placeholder="https://youtube.com/@yourchannel" required />
+        </label>
+
+        <fieldset>
+          <legend>Have you released music on Spotify, Apple Music, Tidal, or similar platforms?</legend>
+          <div class="radio-row">
+            <label class="radio-card"><input type="radio" name="released" value="yes" required /> <span>Yes</span></label>
+            <label class="radio-card"><input type="radio" name="released" value="no" /> <span>No</span></label>
+          </div>
+          <p class="field-hint">Choose Yes to add your Spotify Artist Profile, or No to upload one song.</p>
+        </fieldset>
+
+        <div id="spotify-section" class="conditional-section" aria-live="polite">
+          <label>
+            <span>Spotify Artist Profile</span>
+            <input
+              id="spotify-profile"
+              type="url"
+              name="spotifyArtistProfile"
+              placeholder="https://open.spotify.com/artist/…"
+              pattern="https://open\.spotify\.com/artist/[A-Za-z0-9]+.*"
+              inputmode="url"
+            />
+          </label>
+        </div>
+
+        <div id="song-section" class="conditional-section" aria-live="polite">
+          <label class="upload-box">
+            <span>Upload one song</span>
+            <small>MP3, WAV, FLAC, or M4A accepted.</small>
+            <input id="song-file" type="file" name="song" accept=".mp3,.wav,.flac,.m4a,audio/mpeg,audio/wav,audio/flac,audio/mp4" />
+          </label>
+        </div>
+
+        <button type="submit">Submit to waitlist</button>
+      </form>
+    </section>
+    <footer class="site-footer"> © 2026 Solvaro. All Rights Reserved</footer>
+  </main>

@@ -1,0 +1,175 @@
+:root {
+  color-scheme: dark;
+  --bg: #000;
+  --panel: rgba(18, 18, 18, 0.86);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --text: #fff;
+  --muted: #b9b9b9;
+  --field: rgba(255, 255, 255, 0.08);
+  --field-focus: rgba(255, 255, 255, 0.16);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 28rem),
+    linear-gradient(145deg, #050505, #000 55%, #111);
+  color: var(--text);
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.hero-card {
+  width: min(100%, 880px);
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border: 1px solid var(--panel-border);
+  border-radius: 32px;
+  background: var(--panel);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin-bottom: 2rem;
+  letter-spacing: -0.09em;
+}
+
+.brand__word {
+  font-size: clamp(3.4rem, 13vw, 8rem);
+  font-weight: 900;
+  line-height: 0.9;
+}
+
+.brand__mark {
+  margin-top: 0.18em;
+  font-size: clamp(1.1rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.intro { text-align: center; margin-bottom: 2rem; }
+.eyebrow { margin: 0 0 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.78rem; font-weight: 700; }
+h1 { margin: 0; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.06em; }
+.subtitle { margin: 1rem auto 0; max-width: 620px; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+
+.waitlist-form { display: grid; gap: 1rem; }
+.field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+
+label, fieldset { display: grid; gap: 0.55rem; }
+label span, legend { color: #f4f4f4; font-weight: 700; }
+fieldset { margin: 0; padding: 1rem; border: 1px solid var(--panel-border); border-radius: 18px; }
+legend { padding: 0 0.4rem; }
+
+input, textarea {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: var(--field);
+  color: var(--text);
+  padding: 0.95rem 1rem;
+  font: inherit;
+  outline: none;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+input:focus, textarea:focus { border-color: rgba(255,255,255,0.62); background: var(--field-focus); }
+textarea { resize: vertical; }
+
+.radio-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.radio-card { display: flex; grid-template-columns: auto 1fr; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; border-radius: 999px; background: var(--field); cursor: pointer; }
+.radio-card input { width: auto; accent-color: white; }
+
+.upload-box { border: 1px dashed rgba(255,255,255,0.32); border-radius: 18px; padding: 1rem; background: rgba(255,255,255,0.04); }
+.upload-box small { color: var(--muted); }
+
+button {
+  border: 0;
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  color: #000;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+button:hover { transform: translateY(-2px); box-shadow: 0 18px 35px rgba(255,255,255,0.13); }
+
+.thanks-panel { text-align: center; padding: 3rem 1rem; }
+.success-icon { width: 72px; height: 72px; display: grid; place-items: center; margin: 0 auto 1.2rem; border-radius: 50%; background: #fff; color: #000; font-size: 2.5rem; font-weight: 900; }
+.thanks-panel h2 { margin: 0; font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -0.06em; }
+.thanks-panel p { color: var(--muted); font-size: 1.2rem; }
+
+@media (max-width: 720px) {
+  .page-shell { padding: 1rem; }
+  .hero-card { border-radius: 24px; }
+  .field-grid { grid-template-columns: 1fr; }
+}
+
+.back-link {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.55);
+}
+
+.back-link:hover { border-bottom-color: #fff; }
+
+.site-footer {
+  margin-top: 1.25rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.conditional-section {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: grid-template-rows 240ms ease, opacity 240ms ease, transform 240ms ease;
+  overflow: hidden;
+}
+
+.conditional-section > * { min-height: 0; }
+
+.conditional-section--visible {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.field-hint {
+  margin: -0.1rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.radio-card--selected {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.34);
+}
+
+.waitlist-form:has(input[name="released"][value="yes"]:checked) #spotify-section,
+.waitlist-form:has(input[name="released"][value="no"]:checked) #song-section {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
