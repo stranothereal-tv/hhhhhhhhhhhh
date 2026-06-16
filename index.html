@@ -1,203 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solvaro Waitlist</title>
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
-
-    body{
-      background:#0d0d0d;
-      color:#fff;
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:40px 20px;
-    }
-
-    .container{
-      width:100%;
-      max-width:700px;
-      background:#161616;
-      padding:30px;
-      border-radius:20px;
-      border:1px solid #2a2a2a;
-    }
-
-    h1{
-      text-align:center;
-      margin-bottom:10px;
-    }
-
-    p{
-      text-align:center;
-      color:#aaa;
-      margin-bottom:25px;
-    }
-
-    label{
-      display:block;
-      margin-bottom:15px;
-    }
-
-    label span{
-      display:block;
-      margin-bottom:6px;
-      font-size:14px;
-    }
-
-    input,
-    textarea{
-      width:100%;
-      padding:12px;
-      border-radius:10px;
-      border:1px solid #333;
-      background:#111;
-      color:#fff;
-    }
-
-    textarea{
-      resize:vertical;
-      min-height:100px;
-    }
-
-    .row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:15px;
-    }
-
-    button{
-      width:100%;
-      padding:14px;
-      border:none;
-      border-radius:10px;
-      background:#fff;
-      color:#000;
-      font-weight:bold;
-      cursor:pointer;
-      margin-top:10px;
-    }
-
-    button:hover{
-      opacity:.9;
-    }
-
-    .radio-group{
-      margin:20px 0;
-    }
-
-    .radio-group label{
-      display:inline-block;
-      margin-right:20px;
-    }
-
-    @media(max-width:600px){
-      .row{
-        grid-template-columns:1fr;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <main class="page-shell">
+    <section class="hero-card" aria-labelledby="waitlist-title">
+      <div class="brand" aria-label="Solvaro logo">
+        <span class="brand__word">Solvaro</span><span class="brand__mark">®</span>
+      </div>
 
-<div class="container">
+      <div class="intro">
+        <p class="eyebrow">Artist intake waitlist</p>
+        <h1 id="waitlist-title">Join the Solvaro roster waitlist</h1>
+        <p class="subtitle">Submit your artist details, social links, distribution history, and one song for review.</p>
+      </div>
 
-  <h1>Join the Solvaro Waitlist</h1>
-  <p>Submit your details for artist roster review.</p>
+      <form id="waitlist-form" class="waitlist-form" action="thanks.html" method="post" enctype="multipart/form-data">
+        <div class="field-grid">
+          <label>
+            <span>Full name</span>
+            <input type="text" name="fullName" placeholder="Your legal name" required />
+          </label>
 
-  <form action="https://formspree.io/f/mykaokn" method="POST">
+          <label>
+            <span>Artist name</span>
+            <input type="text" name="artistName" placeholder="Your stage name" required />
+          </label>
+        </div>
 
-    <div class="row">
-      <label>
-        <span>Full Name</span>
-        <input type="text" name="fullName" required>
-      </label>
+        <div class="field-grid">
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="artist@example.com" required />
+          </label>
 
-      <label>
-        <span>Artist Name</span>
-        <input type="text" name="artistName" required>
-      </label>
-    </div>
+          <label>
+            <span>Phone number</span>
+            <input type="tel" name="phone" placeholder="+1 555 000 0000" required />
+          </label>
+        </div>
 
-    <div class="row">
-      <label>
-        <span>Email</span>
-        <input type="email" name="email" required>
-      </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" placeholder="Create a password" minlength="8" required />
+        </label>
 
-      <label>
-        <span>Phone Number</span>
-        <input type="tel" name="phone" required>
-      </label>
-    </div>
+        <label>
+          <span>Social accounts</span>
+          <textarea name="socials" rows="3" placeholder="Instagram, TikTok, X, SoundCloud, or other profile links" required></textarea>
+        </label>
 
-    <label>
-      <span>Password</span>
-      <input type="password" name="password" minlength="8" required>
-    </label>
+        <label>
+          <span>YouTube channel</span>
+          <input type="url" name="youtube" placeholder="https://youtube.com/@yourchannel" required />
+        </label>
 
-    <label>
-      <span>Social Accounts</span>
-      <textarea
-        name="socials"
-        placeholder="Instagram, TikTok, Spotify, SoundCloud..."
-        required></textarea>
-    </label>
+        <fieldset>
+          <legend>Have you released music on Spotify, Apple Music, Tidal, or similar platforms?</legend>
+          <div class="radio-row">
+            <label class="radio-card"><input type="radio" name="released" value="yes" required /> <span>Yes</span></label>
+            <label class="radio-card"><input type="radio" name="released" value="no" /> <span>No</span></label>
+          </div>
+          <p class="field-hint">Choose Yes to add your Spotify Artist Profile, or No to upload one song.</p>
+        </fieldset>
 
-    <label>
-      <span>YouTube Channel</span>
-      <input
-        type="url"
-        name="youtube"
-        placeholder="https://youtube.com/@yourchannel">
-    </label>
+        <div id="spotify-section" class="conditional-section" aria-live="polite">
+          <label>
+            <span>Spotify Artist Profile</span>
+            <input
+              id="spotify-profile"
+              type="url"
+              name="spotifyArtistProfile"
+              placeholder="https://open.spotify.com/artist/…"
+              pattern="https://open\.spotify\.com/artist/[A-Za-z0-9]+.*"
+              inputmode="url"
+            />
+          </label>
+        </div>
 
-    <div class="radio-group">
-      <strong>Have you released music before?</strong><br><br>
+        <div id="song-section" class="conditional-section" aria-live="polite">
+          <label class="upload-box">
+            <span>Upload one song</span>
+            <small>MP3, WAV, FLAC, or M4A accepted.</small>
+            <input id="song-file" type="file" name="song" accept=".mp3,.wav,.flac,.m4a,audio/mpeg,audio/wav,audio/flac,audio/mp4" />
+          </label>
+        </div>
 
-      <label>
-        <input type="radio" name="released" value="Yes" required>
-        Yes
-      </label>
-
-      <label>
-        <input type="radio" name="released" value="No">
-        No
-      </label>
-    </div>
-
-    <label>
-      <span>Spotify Artist Profile</span>
-      <input
-        type="url"
-        name="spotifyArtistProfile"
-        placeholder="https://open.spotify.com/artist/...">
-    </label>
-
-    <label>
-      <span>Song Link (Google Drive, Dropbox, etc.)</span>
-      <input
-        type="url"
-        name="songLink"
-        placeholder="https://">
-    </label>
-
-    <button type="submit">
-      Submit to Waitlist
-    </button>
-
-  </form>
-
-</div>
-
-</body>
-</html>
+        <button type="submit">Submit to waitlist</button>
+      </form>
+    </section>
+    <footer class="site-footer"> © 2026 Solvaro. All Rights Reserved</footer>
+  </main>
