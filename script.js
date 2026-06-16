@@ -1,4 +1,3 @@
-```js
 const supabaseUrl = "https://eskrabhfpxnpoqnpieou.supabase.co/rest/v1/";
 const supabaseKey = "sb_publishable_c7y_c6oeVpFK53zlvQCaLQ_m-RUVw1a";
 
@@ -247,4 +246,3 @@ form.addEventListener(
     }
   }
 );
-```
